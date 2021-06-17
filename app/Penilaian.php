@@ -8,15 +8,15 @@ class Penilaian extends Model
 {
 
     protected $fillable=[
-        'id_siswa','id_pelanggaran','keterangan'
+        'id_santri','id_kategori','keterangan'
     ];
 
-    public function siswa()
+    public function santri()
     {
-        return $this->belongsTo(Siswa::class,'id_siswa');
+        return $this->belongsTo(Santri::class,'id_santri');
     }
-    public function pelanggaran()
+    public function kategori()
     {
-       return $this->belongsTo(Pelanggaran::class,'id_pelanggaran');
+       return $this->belongsTo(Kategori::class,'id_kategori');
     }
 }

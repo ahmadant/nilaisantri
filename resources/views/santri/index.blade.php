@@ -7,7 +7,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <div class="card-title">Data Penialaian</div>
+        <div class="card-title">Data Santri</div>
         @if (session('sukses'))
         <div class="alert alert-info">
           {{ session('sukses') }}
@@ -25,29 +25,28 @@
     </div>
     <div class="card-body">
         <div class="card-sub">
-           <a href="{{ route('penilaian.create')}}" class="btn btn-danger btn-sm">Tambah data</a>
+           <a href="{{ route('santri.create')}}" class="btn btn-danger btn-sm">Tambah data</a>
         </div>
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
               <tr>
                 <th>No</th>
-                <th>Nama Santri</th>
+                <th>Nama</th>
+                <th>Alamat</th>
                 <th>Nis</th>
-                <th>Penilaian</th>
-                <th>Bobot Penilaian</th>
-                <th>Keterangan</th>
+                <th>Foto</th>
                 <th></th>
               </tr>
             </thead>
             <tfoot>
-                <tr>
-                    <th>No</th>
-                    <th>Nama Santri</th>
-                    <th>Nis</th>
-                    <th>Penilaian</th>
-                    <th>Bobot Penilaian</th>
-                    <th>Keterangan</th>
-                    <th></th>
+               <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Alamat</th>
+                <th>Nis</th>
+                <th>Foto</th>
+                <th></th>
+              </tr>
             </tfoot>
             <tbody>
 
@@ -66,15 +65,14 @@
             $("#dataTable").DataTable({
                 processing :true,
                 serverSide :true,
-                ajax       :"{{ route('api.datatable.penilaian') }}",
+                ajax       :"{{ route('api.datatable.santri') }}",
                 columns:[
                     {data: 'DT_Row_Index',orderable: false, searchable: false},
-                    {data: 'nama',               name: 'nama' },
-                    {data: 'nis',                name: 'nis' },
-                    {data: 'kategori',        name: 'kategori' },
-                    {data: 'bobot',              name: 'bobot' },
-                    {data: 'keterangan',         name: 'keterangan' },
-                    {data: 'action',             name: 'action', orderable:false, seacrhable:false},
+                    {data: 'nama',      name: 'nama' },
+                    {data: 'alamat',    name: 'alamat' },
+                    {data: 'nis',       name: 'nis' },
+                    {data: 'foto',      name: 'foto' },
+                    {data: 'action',    name: 'action', orderable:false, seacrhable:false},
               ]
             })
         });

@@ -37,10 +37,19 @@ class PenilaianController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'id_siswa'=>'required',
-            'id_pelanggaran'=>'required',
+            'id_santri'=>'required',
+            'id_kategori'=>'required',
             'keterangan'=>'required'
         ]);
+        $new_nilai = new Penilaian;
+        // $kode_nilai = today('ymd')."#".$request->id_santri;
+        // foreach ($request->ktgnilai as $key) {
+            // $new_nilai->id_santri = $request->id_santri;
+            // $new_nilai->kode_nilai = $kode_nilai;
+            // $new_nilai->id_kategori = $request->ktgnilai;
+            // $new_nilai->keterangan = $request->keterangan;
+            // $new_nilai->save();
+        // }
         Penilaian::Create($request->all());
         return redirect()->route('penilaian.index')->with('sukses','penilaian berhasil di masukan');
     }
@@ -79,8 +88,8 @@ class PenilaianController extends Controller
     {
         $penilaian=Penilaian::findOrFail($penilaian)->first();
         $this->validate($request,[
-            'id_siswa'=>'required',
-            'id_pelanggaran'=>'required',
+            'id_santri'=>'required',
+            'id_kategori'=>'required',
             'keterangan'=>'required'
         ]);
         $penilaian->update($request->all());
@@ -103,16 +112,16 @@ class PenilaianController extends Controller
         return Datatables::of($penilaian)
         ->addIndexColumn()
         ->addColumn('nama',function($penilaian){
-            return $penilaian->siswa->nama;
+            return $penilaian->santri->nama;
         })
         ->addColumn('nis',function($penilaian){
-            return $penilaian->siswa->nis;
+            return $penilaian->santri->nis;
         })
-        ->addColumn('pelanggaran',function($penilaian){
-            return $penilaian->pelanggaran->nama;
+        ->addColumn('kategori',function($penilaian){
+            return $penilaian->kategori->nama;
         })
         ->addColumn('bobot',function($penilaian){
-            return $penilaian->pelanggaran->bobot;
+            return $penilaian->kategori->bobot;
         })
         ->addColumn('action',function($penilaian){
           return view('layouts.button',[
@@ -121,7 +130,7 @@ class PenilaianController extends Controller
              'model'=>$penilaian
           ]);
         })
-        ->rawColumns(['action','siswa','pelanggan','nis','bobot'])
+        ->rawColumns(['action','santri','pelanggan','nis','bobot'])
         ->make(true);
     }
 }

@@ -18,16 +18,15 @@ Route::get('/', function () {
 //     return view('layouts.backend');
 // });
 
-Auth::routes(['verify'=>true]);
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/laporan','HomeController@cetak')->name('laporan')->middleware('verified');
+Route::get('/laporan','HomeController@cetak')->name('laporan');
 Route::group(['middleware'=>'auth'], function() {
-Route::get('/api/datatable/siswa','SiswaController@dataTable')->name('api.datatable.siswa');
-Route::get('/api/datatable/pelanggaran','PelanggaranController@data')->name('api.datatable.pelanggaran');
-Route::get('/api/datatable/penilaian','PenilaianController@data')->name('api.datatable.penilaian');
-Route::resource('siswa', 'SiswaController');
-Route::resource('pelanggaran', 'PelanggaranController');
-Route::resource('penilaian', 'PenilaianController');
-
+    Route::get('/api/datatable/santri','SantriController@dataTable')->name('api.datatable.santri');
+    Route::get('/api/datatable/kategori','KategoriController@data')->name('api.datatable.kategori');
+    Route::get('/api/datatable/penilaian','PenilaianController@data')->name('api.datatable.penilaian');
+    Route::resource('santri', 'SantriController');
+    Route::resource('kategori', 'KategoriController');
+    Route::resource('penilaian', 'PenilaianController');
 });

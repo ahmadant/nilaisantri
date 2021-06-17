@@ -6,17 +6,17 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="{{ route('siswa.index') }}">
+        <a href="{{ route('santri.index') }}">
             <i class="la la-table"></i>
-            <p>Siswa</p>
-            <span class="badge badge-count">{{ App\Siswa::count() }}</span>
+            <p>Santri</p>
+            <span class="badge badge-count">{{ App\Santri::count() }}</span>
         </a>
     </li>
     <li class="nav-item">
-        <a href="{{ route('pelanggaran.index') }}">
+        <a href="{{ route('kategori.index') }}">
             <i class="la la-keyboard-o"></i>
-            <p>Pelanggaran</p>
-            <span class="badge badge-count">{{ App\Pelanggaran::count() }}</span>
+            <p>Kategori</p>
+            <span class="badge badge-count">{{ App\Kategori::count() }}</span>
         </a>
     </li>
     <li class="nav-item">

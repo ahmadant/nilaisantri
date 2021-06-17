@@ -1,5 +1,4 @@
-@extends('layouts.backend')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="row">
 <div class="col-md-7">
         <div class="card">
@@ -10,7 +9,7 @@
 
 <div class="col-md-4">
     <div class="card">
-     <a href="{{ route('laporan') }}" class="btn btn-info">Cetak laporan</a>
+     <a href="<?php echo e(route('laporan')); ?>" class="btn btn-info">Cetak laporan</a>
     </div>
 </div>
 </div>
@@ -21,8 +20,8 @@
 }
  ?>
 
-@endsection
-@section('card')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('card'); ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
     <script>
         var ctx = document.getElementById("myChart").getContext('2d');
@@ -63,4 +62,6 @@
             }
         });
         </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.backend', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

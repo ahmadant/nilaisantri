@@ -1,31 +1,33 @@
-@extends('layouts.backend')
-@section('assets-top')
+<?php $__env->startSection('assets-top'); ?>
 
-<link href="{{ asset('datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-<link href="{{ asset('datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
-@endsection
-@section('content')
+<link href="<?php echo e(asset('datatables/dataTables.bootstrap4.min.css')); ?>" rel="stylesheet">
+<link href="<?php echo e(asset('datatables/responsive.bootstrap4.min.css')); ?>" rel="stylesheet" type="text/css" />
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
 <div class="card">
     <div class="card-header">
         <div class="card-title">Data Penialaian</div>
-        @if (session('sukses'))
+        <?php if(session('sukses')): ?>
         <div class="alert alert-info">
-          {{ session('sukses') }}
+          <?php echo e(session('sukses')); ?>
+
         </div>
-        @elseif (session('edit'))
+        <?php elseif(session('edit')): ?>
         <div class="alert alert-warning">
-                {{ session('edit') }}
+                <?php echo e(session('edit')); ?>
+
               </div>
-        @elseif (session('hapus'))
+        <?php elseif(session('hapus')): ?>
         <div class="alert alert-danger">
-                {{ session('hapus') }}
+                <?php echo e(session('hapus')); ?>
+
               </div>
-       @endif
+       <?php endif; ?>
 
     </div>
     <div class="card-body">
         <div class="card-sub">
-           <a href="{{ route('penilaian.create')}}" class="btn btn-danger btn-sm">Tambah data</a>
+           <a href="<?php echo e(route('penilaian.create')); ?>" class="btn btn-danger btn-sm">Tambah data</a>
         </div>
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
@@ -53,20 +55,20 @@
 
             </tbody>
           </table>
-@endsection
-@section('assets-bottom')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('assets-bottom'); ?>
     <!-- Page level plugin JavaScript-->
-    <script src="{{ asset('datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="<?php echo e(asset('datatables/jquery.dataTables.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('datatables/dataTables.bootstrap4.min.js')); ?>"></script>
     <!-- Responsive examples -->
-    <script src="{{ asset('datatables/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('datatables/responsive.bootstrap4.min.js') }}"></script>
+    <script src="<?php echo e(asset('datatables/dataTables.responsive.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('datatables/responsive.bootstrap4.min.js')); ?>"></script>
     <script>
         $(document).ready(function(){
             $("#dataTable").DataTable({
                 processing :true,
                 serverSide :true,
-                ajax       :"{{ route('api.datatable.penilaian') }}",
+                ajax       :"<?php echo e(route('api.datatable.penilaian')); ?>",
                 columns:[
                     {data: 'DT_Row_Index',orderable: false, searchable: false},
                     {data: 'nama',               name: 'nama' },
@@ -79,4 +81,5 @@
             })
         });
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.backend', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

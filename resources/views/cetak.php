@@ -6,10 +6,10 @@
             <thead>
               <tr>
                 <th>No</th>
-                <th>Nama Siswa</th>
+                <th>Nama Santri</th>
                 <th>Nis</th>
-                <th>Pelanggaran</th>
-                <th>Bobot Pelanggaran</th>
+                <th>Penilaian</th>
+                <th>Bobot Penilaian</th>
                 <th>Keterangan</th>
               </tr>
             </thead>
@@ -18,10 +18,10 @@
                 <?php foreach($penilaian as $p): ?>
                 <tr>
                     <td><?php echo $no ?></td>
-                    <td><?php echo $p->siswa->nama;  ?></td>
-                    <td><?php echo $p->siswa->nis;  ?></td>
-                    <td><?php echo $p->pelanggaran->nama;  ?></td>
-                    <td><?php echo $p->pelanggaran->bobot;  ?></td>
+                    <td><?php echo $p->santri->nama;  ?></td>
+                    <td><?php echo $p->santri->nis;  ?></td>
+                    <td><?php echo $p->kategori->nama;  ?></td>
+                    <td><?php echo $p->kategori->bobot;  ?></td>
                     <td><?php echo $p->keterangan;  ?></td>
 <?php $no++; ?>
 <?php  endforeach;  ?>

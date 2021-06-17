@@ -15,10 +15,11 @@ class CreatePenilaiansTable extends Migration
     {
         Schema::create('penilaians', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_siswa')->unsigned();
-            $table->foreign('id_siswa')->references('id')->on('siswas')->onDelete('cascade');
-            $table->integer('id_pelanggaran')->unsigned();
-            $table->foreign('id_pelanggaran')->references('id')->on('pelanggarans')->onDelete('cascade');
+            $table->string('kode_nilai');
+            $table->integer('id_santri')->unsigned();
+            $table->foreign('id_santri')->references('id')->on('santris')->onDelete('cascade');
+            $table->integer('id_kategori')->unsigned();
+            $table->foreign('id_kategori')->references('id')->on('kategoris')->onDelete('cascade');
             $table->string('keterangan');
             $table->timestamps();
         });
@@ -32,6 +33,6 @@ class CreatePenilaiansTable extends Migration
     public function down()
     {
         Schema::dropIfExists('penilaians');
-        $table->dropForeign(['id_siswa','id_pelanggaran']);
+        $table->dropForeign(['id_santri','id_kategori']);
     }
 }

@@ -13,14 +13,16 @@ class PenilaiansTableSeeder extends Seeder
     {
         $penilaians=[
             [
-                'id_siswa'       => '1',
-                'id_pelanggaran' => '2',
-                'keterangan'     =>'keteraluan',
+                'id_santri'       => '1',
+                'kode_nilai' => '20200617#1',
+                'id_kategori' => '1',
+                'keterangan'     =>'bagus',
             ],
             [
-                'id_siswa'       => '2',
-                'id_pelanggaran' => '2',
-                'keterangan'     => 'sangat nakal',
+                'id_santri'       => '2',
+                'kode_nilai' => '20200617#2',
+                'id_kategori' => '3',
+                'keterangan'     => 'sangat bagus',
             ]
         ];
         DB::table('penilaians')->insert($penilaians);
